@@ -23,30 +23,37 @@
             }
             function playRound(playerSelection, computerSelection){
                 if (playerSelection == "Rock" && computerSelection == "Scissor"){
-                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    winner = "Player";
+                    result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
                     return result;
                 }
                 else if (playerSelection == "Scissor" && computerSelection == "Paper"){
-                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    winner = "Player";
+                    result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
                     return result;
                 }
                 else if (playerSelection == "Paper" && computerSelection == "Rock"){
-                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    winner = "Player";
+                    result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
                     return result;
                 }
                 if (computerSelection == "Rock" && playerSelection == "Scissor"){
-                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    winner = "Computer";
+                    result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
                     return result;
                 }
                 else if (computerSelection == "Scissor" && playerSelection == "Paper"){
-                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    winner = "Computer";
+                    result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
                     return result;
                 }
                 else if (computerSelection == "Paper" && playerSelection == "Rock"){
-                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    winner = "Computer";
+                    result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
                     return result;
                 }
             }
+            console.log(playRound("Rock","Scissor"));
             
         </script>
     </body>
