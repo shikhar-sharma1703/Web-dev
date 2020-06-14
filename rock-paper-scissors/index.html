@@ -22,39 +22,62 @@
                 }
             }
             function playRound(playerSelection, computerSelection){
-                if (playerSelection == "Rock" && computerSelection == "Scissor"){
+                playerSelection = playerSelection.toUpperCase();
+                computerSelection = computerSelection.toUpperCase();
+                let result = "";
+                let winner = "";
+                if (playerSelection == "ROCK" && computerSelection == "SCISSOR"){
                     winner = "Player";
                     result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
-                    return result;
                 }
-                else if (playerSelection == "Scissor" && computerSelection == "Paper"){
+                else if (playerSelection == "SCISSOR" && computerSelection == "PAPER"){
                     winner = "Player";
                     result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
-                    return result;
                 }
-                else if (playerSelection == "Paper" && computerSelection == "Rock"){
+                else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
                     winner = "Player";
                     result = `${winner} wins! ${playerSelection} beats ${computerSelection}`;
-                    return result;
                 }
-                if (computerSelection == "Rock" && playerSelection == "Scissor"){
+                else if (computerSelection == "ROCK" && playerSelection == "SCISSOR"){
                     winner = "Computer";
                     result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
-                    return result;
                 }
-                else if (computerSelection == "Scissor" && playerSelection == "Paper"){
+                else if (computerSelection == "SCISSOR" && playerSelection == "PAPER"){
                     winner = "Computer";
                     result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
-                    return result;
                 }
-                else if (computerSelection == "Paper" && playerSelection == "Rock"){
+                else if (computerSelection == "PAPER" && playerSelection == "ROCK"){
                     winner = "Computer";
                     result = `${winner} wins! ${computerSelection} beats ${playerSelection}`;
-                    return result;
+                }
+                else if (playerSelection==computerSelection){
+                    result = "Tie";
+                }
+                return result;
+            }
+            function game(){
+                let PlayerCount = 0;
+                let ComputerCount = 0;
+                for(let i = 0; i < 5;i++){
+                    let playerSelection = prompt("Rock, Paper or Scissor");
+                    let computerSelection = computerPlay(getRandomInt(3));
+                    let RoundResult = playRound(playerSelection,computerSelection);
+                    console.log(RoundResult);
+                    if (RoundResult.indexOf("Player") >= 0){
+                        PlayerCount += 1;
+                    }
+                    else if(RoundResult.indexOf("Computer") >= 0){
+                        ComputerCount += 1
+                    }
+                }
+                if (PlayerCount > ComputerCount){
+                    return "You beat Computer!"
+                }
+                else{
+                    return "Computer beats You!"
                 }
             }
-            console.log(playRound("Rock","Scissor"));
-            
+            console.log(game());
         </script>
     </body>
 </html>
