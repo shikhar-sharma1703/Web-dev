@@ -1,0 +1,53 @@
+<html>
+    <header>
+        <title>Rock-Paper-Scissor</title>
+    </header>
+    <body>
+        <h1>
+            Rock-Paper-Scissor(Open console to play)
+        </h1>
+        <script>
+            function getRandomInt(max){
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            function computerPlay(n){
+                if (n == 0){
+                    return 'Rock';
+                }
+                else if (n == 1){
+                    return 'Paper';
+                }
+                else if (n == 2){
+                    return 'Scissor';
+                }
+            }
+            function playRound(playerSelection, computerSelection){
+                if (playerSelection == "Rock" && computerSelection == "Scissor"){
+                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    return result;
+                }
+                else if (playerSelection == "Scissor" && computerSelection == "Paper"){
+                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    return result;
+                }
+                else if (playerSelection == "Paper" && computerSelection == "Rock"){
+                    result = `You Lose! ${playerSelection} beats ${computerSelection}`;
+                    return result;
+                }
+                if (computerSelection == "Rock" && playerSelection == "Scissor"){
+                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    return result;
+                }
+                else if (computerSelection == "Scissor" && playerSelection == "Paper"){
+                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    return result;
+                }
+                else if (computerSelection == "Paper" && playerSelection == "Rock"){
+                    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+                    return result;
+                }
+            }
+            
+        </script>
+    </body>
+</html>
