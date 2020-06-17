@@ -1,32 +1,24 @@
-<html lang="en">
+<html>
     <head>
-        <link rel="stylesheet" href="main.css" type="text/css">
-        <title> Rock, Paper, Scissors</title>
+        <title>Rock, Paper, Scissor</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <header>
-            <img src="Images/rps.png" alt="rock paper scissor" id="rps">
-        </header>
-        <main>
-            <button type="button" id="restart">Restart</button>
-            <div class="scoreboard">
-                <p class="scoreboard">Scoreboard</p>
-                <p class="scores">Computer: 0</p>
-                <p class="scores">Player: 0</p>
+        <div id="root">
+            <h1>Rock Paper Scissors</h1>
+            <div id="series">Score 5 points to WIN!</div>
+            <div id="round">Round result</div>
+            <div class="parent">
+                <div id="you">Your score: 0</div>
+                <div id='bot'>Bot score: 0</div>
             </div>
-            <div class="comp-choice">
-                <p>Computer: </p>
+
+            <div class="parent">
+                <button id="rock" value="rock">Rock</button>
+                <button id="paper" value="paper">Paper</button>
+                <button id="scissor" value="scissor">Scissor</button>
             </div>
-            <h2 id="game-status">Let's Play!</h2>
-            <div class="player-choice">
-                <p>Player</p>
-                <div class="buttons">
-                    <button id="rock" class="player">ROCK</button>
-                    <button id="paper" class="player">PAPER</button>
-                    <button id="scissor" class="player">SCISSOR</button>
-                </div> 
-            </div>
-        </main>
-        <script src="script.js"></script>
+        </div>
+
+        <script type="text/javascript" src="script.js"></script>
     </body>
-</html>
