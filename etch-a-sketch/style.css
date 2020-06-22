@@ -14,4 +14,22 @@
 	padding: 0;
 	border: none;
 }
+.newGrid{
+    margin: 0 auto;
+    display: inline-block;
+    color: #494949;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949;
+    transition: all 0.4s ease 0s;
+}
+
+.newGrid:hover {
+    color: #ffffff !important;
+    background: #4c5856;
+    border-color: #191306 !important;
+    transition: all 0.4s ease 0s;
+}
 
