@@ -4,11 +4,11 @@ const container = document.getElementById("container");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
 
-// Creates a default grid sized 16x16
+// Creates a default grid sized 20 x 20
 function defaultGrid() {
     makeRows(20);
     makeColumns(20);
-    let heightwidth = 960/20 + 'px';
+    let heightwidth = `${960 / 20}px`;
     for(let k = 0; k < cells.length; k++){
         cells[k].setAttribute('style',`height: ${heightwidth}; width: ${heightwidth}`);
     }
@@ -33,5 +33,13 @@ function makeColumns(cellNum) {
         };
     };
 };
+defaultGrid();
 
-defaultGrid()
+function onHover(){
+    this.style.backgroundColor = 'black';
+}
+
+Array.from(cells).forEach(function(cell){
+    cell.addEventListener('mouseover',onHover);
+});
+
