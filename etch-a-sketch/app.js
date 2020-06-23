@@ -39,9 +39,7 @@ function defaultGrid(x) {
 
 defaultGrid(50);
 changeBGcolor();
-reset.addEventListener('click',resetGrid);
-random.addEventListener('click',changeRBGcolor);
-eraser.addEventListener('click',changeWhiteBG)
+
 
 
 //Clearing grid
@@ -80,19 +78,28 @@ function erasing(){
 
 function changeBGcolor(){
     Array.from(cells).forEach(function(cell){
+        cell.removeEventListener('mouseover',changeRBGcolor);
+        cell.removeEventListener('mouseover',erasing);
         cell.addEventListener('mouseover',onHoverBlack);
     });
 }
 
 function changeRBGcolor(){
     Array.from(cells).forEach(function(cell){
+        cell.removeEventListener('mouseover',changeBGcolor);
+        cell.removeEventListener('mouseover',erasing);
         cell.addEventListener('mouseover',onHoverRGB);
     });
 }
 
 function changeWhiteBG(){
     Array.from(cells).forEach(function(cell){
-       cell.addEventListener('mouseover',erasing);
+        cell.removeEventListener('mouseover',changeBGcolor);
+        cell.removeEventListener('mouseover',changeRBGcolor);
+        cell.addEventListener('mouseover',erasing);
     });
 }
 
+reset.addEventListener('click',resetGrid);
+random.addEventListener('click',changeRBGcolor);
+eraser.addEventListener('click',changeWhiteBG)
