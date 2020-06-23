@@ -3,8 +3,9 @@
 const container = document.getElementById("container");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
-let sizeOfGrid = window.prompt("Enter blocks you want on each side: ");
 const reset = document.querySelector('#reset_btn');
+const random = document.querySelector('#random');
+const eraser = document.querySelector('#eraser');
 
 // Takes (rows, columns) input and makes a grid
 function makeRows(rowNum) {
@@ -36,8 +37,11 @@ function defaultGrid(x) {
     }
 }
 
-defaultGrid(sizeOfGrid);
+defaultGrid(50);
+changeBGcolor();
 reset.addEventListener('click',resetGrid);
+random.addEventListener('click',changeRBGcolor);
+eraser.addEventListener('click',changeWhiteBG)
 
 
 //Clearing grid
@@ -49,26 +53,46 @@ function clearGrid(){
 
 
 function resetGrid(){
-    sizeOfGrid = window.prompt("Enter blocks you want on each side: ");
+    let sizeOfGrid = window.prompt("Enter blocks you want on each side: ");
     clearGrid();
     defaultGrid(sizeOfGrid);
-    function onHover(){
-        this.style.backgroundColor = 'black';
-    }
-    
     Array.from(cells).forEach(function(cell){
-        cell.addEventListener('mouseover',onHover);
+        cell.addEventListener('mouseover',onHoverBlack);
     });
-    
 }
 
 // Added hover functionality
-function onHover(){
+function onHoverBlack(){
     this.style.backgroundColor = 'black';
 }
 
-Array.from(cells).forEach(function(cell){
-    cell.addEventListener('mouseover',onHover);
-});
+function onHoverRGB(){
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let color = `${r},${g},${b}`;
+    this.style.backgroundColor = `rgb(${color})`
+}
 
+function erasing(){
+    this.style.backgroundColor = 'white'
+}
+
+function changeBGcolor(){
+    Array.from(cells).forEach(function(cell){
+        cell.addEventListener('mouseover',onHoverBlack);
+    });
+}
+
+function changeRBGcolor(){
+    Array.from(cells).forEach(function(cell){
+        cell.addEventListener('mouseover',onHoverRGB);
+    });
+}
+
+function changeWhiteBG(){
+    Array.from(cells).forEach(function(cell){
+       cell.addEventListener('mouseover',erasing);
+    });
+}
 
