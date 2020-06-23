@@ -9,15 +9,16 @@
 	outline:2px solid #000;
 	font-size: 0;
 	margin:auto;
-	height:960px;
-	width:960px;
+	height:750px;
+	width:750px;
 	padding: 0;
 	border: none;
 }
 
 .newGrid{
-    margin: 0 auto;
+    margin-right: 25px;
     display: inline-block;
+    text-align: center;
     color: #494949;
     text-transform: uppercase;
     text-decoration: none;
@@ -32,4 +33,9 @@
     background: #4c5856;
     border-color: #191306 !important;
     transition: all 0.4s ease 0s;
+}
+
+#buttons {
+    margin-top: 25px;
+    text-align: center;
 }

@@ -32,7 +32,7 @@ function makeColumns(cellNum) {
 function defaultGrid(x) {
     makeRows(x);
     makeColumns(x);
-    let heightwidth = `${960 / x}px`;
+    let heightwidth = `${750 / x}px`;
     for(let k = 0; k < cells.length; k++){
         cells[k].setAttribute('style',`height: ${heightwidth}; width: ${heightwidth}`);
     }
