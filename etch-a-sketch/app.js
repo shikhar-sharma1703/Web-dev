@@ -6,6 +6,7 @@ let cells = document.getElementsByClassName("cell");
 const reset = document.querySelector('#reset_btn');
 const random = document.querySelector('#random');
 const eraser = document.querySelector('#eraser');
+const black = document.querySelector('#black');
 
 // Takes (rows, columns) input and makes a grid
 function makeRows(rowNum) {
@@ -78,8 +79,8 @@ function erasing(){
 
 function changeBGcolor(){
     Array.from(cells).forEach(function(cell){
-        cell.removeEventListener('mouseover',changeRBGcolor);
         cell.removeEventListener('mouseover',erasing);
+        cell.removeEventListener('mouseover',onHoverRGB);
         cell.addEventListener('mouseover',onHoverBlack);
     });
 }
@@ -102,4 +103,5 @@ function changeWhiteBG(){
 
 reset.addEventListener('click',resetGrid);
 random.addEventListener('click',changeRBGcolor);
-eraser.addEventListener('click',changeWhiteBG)
+eraser.addEventListener('click',changeWhiteBG);
+black.addEventListener('click',changeBGcolor);
