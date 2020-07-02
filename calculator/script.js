@@ -23,7 +23,9 @@ const operate = (a,op,b) => {
 const number_buttons = document.querySelectorAll('.calculator-keys .number');
 const operater_button = document.querySelectorAll('.calculator-keys .operator');
 const calc_display = document.getElementById('display-screen');
-const equal_key = document.getElementById('equal-sign')
+const equal_key = document.getElementById('equal-sign');
+const operations = document.getElementsByClassName('operations');
+
 
 
 let displayvalue = '';
@@ -51,9 +53,28 @@ const calculation = function(){
 
     operator = this.value;
     prevvalue = displayvalue;
-    displayvalue = ''
+    displayvalue = '';
 }
 
 operater_button.forEach(function(operator){
     operator.addEventListener('click',calculation)
+})
+
+const functionality = function(){
+    if(this.value === '='){
+        displayvalue = operate(prevvalue,operator,displayvalue);
+        calc_display.value = displayvalue;
+        prevvalue = displayvalue;
+        displayvalue = ''
+    }
+    if(this.value === 'all-clear'){
+        displayvalue = '';
+        calc_display.value = displayvalue;
+        prevvalue = ''
+        operator = '';
+    }
+}
+
+Array.from(operations).forEach(function(operation){
+    operation.addEventListener('click',functionality);
 })
