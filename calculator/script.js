@@ -18,4 +18,10 @@ const operate = (a,op,b) => {
     }
 }
 
+const number_buttons = document.querySelectorAll('.calculator-keys .number');
+const operater_button = document.querySelectorAll('.calculator-keys .operator');
+const calc_display = document.getElementsByClassName('calculator-screen');
+
+
+let currentvalue = '';
 
