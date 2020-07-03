@@ -1,23 +1,34 @@
+const formatter = new Intl.NumberFormat('en-US', {      
+    maximumFractionDigits: 5,
+ });
+
 const add = (a,b) => a+b;
 const subtract = (a,b) => a-b;
 const multiply = (a,b) => a*b;
 const divide = (a,b) => a/b;
 
 const operate = (a,op,b) => {
+    let result;
+    if (isNaN(a) || isNaN(b)) return
     a = Number(a);
     b = Number(b);
     if(op === '+'){
-        return add(a,b)
+        result = formatter.format(add(a,b))
     }
     if(op === '-'){
-        return subtract(a,b)
+        result = formatter.format(subtract(a,b))
     }
     if(op === '*'){
-        return multiply(a,b)
+        result = formatter.format(multiply(a,b))
     }
     if(op === '/'){
-        return divide(a,b)
+        if(b == 0){
+            result = "Math error"
+        }
+        else result = formatter.format(divide(a,b));
     }
+    if (isNaN(result)){ result = "Add a operation"}
+    return result; 
 }
 
 const number_buttons = document.querySelectorAll('.calculator-keys .number');
@@ -25,7 +36,6 @@ const operater_button = document.querySelectorAll('.calculator-keys .operator');
 const calc_display = document.getElementById('display-screen');
 const equal_key = document.getElementById('equal-sign');
 const operations = document.getElementsByClassName('operations');
-
 
 
 let displayvalue = '';
@@ -50,7 +60,6 @@ const calculation = function(){
         displayvalue = operate(prevvalue, operator, displayvalue);
         calc_display.value = displayvalue;
     }
-
     operator = this.value;
     prevvalue = displayvalue;
     displayvalue = '';
@@ -64,8 +73,10 @@ const functionality = function(){
     if(this.value === '='){
         displayvalue = operate(prevvalue,operator,displayvalue);
         calc_display.value = displayvalue;
+        //console.log(`${displayvalue} yahan se aaya`)
         prevvalue = displayvalue;
         displayvalue = ''
+        operator = ''
     }
     if(this.value === 'all-clear'){
         displayvalue = '';
