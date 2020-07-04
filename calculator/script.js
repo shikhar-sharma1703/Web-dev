@@ -72,8 +72,8 @@ operater_button.forEach(function(operator){
 const functionality = function(){
     if(this.value === '='){
         displayvalue = operate(prevvalue,operator,displayvalue);
+        if (isNaN(displayvalue)){ displayvalue = "Add a operation"}
         calc_display.value = displayvalue;
-        //console.log(`${displayvalue} yahan se aaya`)
         prevvalue = displayvalue;
         displayvalue = ''
         operator = ''

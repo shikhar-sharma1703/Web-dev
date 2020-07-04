@@ -9,6 +9,10 @@ html {
     box-sizing: inherit;
 }
 
+body{
+    background: linear-gradient(to bottom, #cfe7fa 0%,#6393c1 100%);
+}
+
 .calculator {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -17,6 +21,7 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
+    box-shadow: 0 0 20px 0px black;
 }
 
 .calculator-screen {
@@ -88,3 +93,4 @@ button:hover {
     grid-column-gap: 20px;
     padding: 20px;
 }
+
