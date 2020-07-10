@@ -1,4 +1,5 @@
 let addBook = document.getElementById('New-book')
+let submit = document.getElementById('submit')
 
 
 //array to store book objects
@@ -15,6 +16,12 @@ function Book(title, author, pages, isRead){
     }
 }
 
-function addBookToLibrary(){
-
+function openForm(){
+    document.getElementById("popup-form").style.display = 'block';
 }
+
+function closeForm(){
+    document.getElementById("popup-form").style.display = 'none';
+}
+addBook.addEventListener('click',openForm)
+submit.addEventListener('click',closeForm)

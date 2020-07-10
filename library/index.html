@@ -4,28 +4,34 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <button id="New-book">Add new book</button>
-    <div class="popup-form" id="popup-form">
-        <div class="form-group">
-            <label for="name" id="name-label">Name: </label>
-            <input name="name" type="text" id="name" placeholder="Enter book's name"/>
-        </div>
-
-        <div class="form-group">
-            <label for="author" id="author-label">Author: </label>
-            <input name="author" type="text" id="author" placeholder="Enter author's name"/>
-        </div>
-
-        <div class="form-group">
-            <label for="pages" id="pages-label">Number of pages: </label>
-            <input name="pages" type="number" id="pages" placeholder="Enter no. of pages"/>
-        </div>
-
-        <div class="form-group">
-            <p>Read it yet?</p>
-            <label><input id="read" value="true" type="radio" class="readornot"/>Read</label>
-            <label><input id="notread" value="false" type="radio" class="readornot"/>Not read</label>
-        </div>
+    <div style="text-align: center;">
+    <button id="New-book" class="buttons">Add new book</button>
+    </div>
+    <div class="container" id="popup-form">
+        <form id="contact">
+            <h3>Enter book details:</h3>
+            
+            <fieldset>
+                <input id="bookname" placeholder="Book's name" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            
+            <fieldset>
+                <input id="author" placeholder="Author's name" type="text" tabindex="2" required>
+            </fieldset>
+            
+            <fieldset>
+                <input id="pages" placeholder="No. of pages" type="text" tabindex="1" required>
+            </fieldset>
+            
+            <fieldset>
+                <label for="status">Read:</label>
+                <input type="checkbox" name="status" id="status" checked>
+            </fieldset>
+            
+            <fieldset>
+                <button name="submit" type="submit" id="submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
     </div>
 </body>
 <script type="text/javascript" src="script.js"></script>
