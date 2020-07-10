@@ -67,7 +67,7 @@ fieldset {
   border: 1px solid #aaa;
 }
 
-#contact button[type="submit"] {
+#contact #submit {
     cursor: pointer;
     width: 100%;
     border: none;
