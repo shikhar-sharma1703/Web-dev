@@ -1,5 +1,6 @@
 let addBook = document.getElementById('New-book')
 let submit = document.getElementById('submit')
+let library = document.getElementById('card-container')
 
 //array to store book objects
 let myLibrary = []
@@ -47,6 +48,33 @@ function storeValues(e){
     else{
         myLibrary.push(new Book(title,author,pages,false))
     }
+    render()
 }
 
 submit.addEventListener('click',storeValues)
+
+function render(){
+    library.innerHTML = '';
+    for(let i=0;i<myLibrary.length;i++){
+        if(myLibrary[i].isRead == true){
+            library.innerHTML += `<div class="card"> \
+            <div class="text">\
+            <span class="main"><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><p>${myLibrary[i].author}</p></span> \
+            <span class="main"><p>${myLibrary[i].pages}</p></span> \
+            <span class="main"><p>I have read it.</p></span> \
+            </div> \
+            </div>`
+        }
+        else{
+            library.innerHTML += `<div class="card"> \
+            <div class="text">\
+            <span class="main"><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><p>${myLibrary[i].author}</p></span> \
+            <span class="main"><p>${myLibrary[i].pages}</p></span> \
+            <span class="main"><p>I have'nt read it.</p></span> \
+            </div> \
+            </div>`
+        }
+    }
+}
