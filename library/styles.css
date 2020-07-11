@@ -129,9 +129,7 @@ fieldset {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     justify-content: center;
-    align-items: center;
     background-color: #fff;
-    height: 100vh;
 }
 
 .card {
@@ -155,13 +153,17 @@ fieldset {
 
 .btn{
     color: white;
-    padding: 10px;
     cursor: pointer;
     margin: 1em;
-    top: 0.96em;
 }
 
 .main{
     color: white;
     padding: 0.1rem;
+}
+
+.book-read {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
 }

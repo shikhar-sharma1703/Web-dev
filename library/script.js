@@ -63,28 +63,28 @@ function render(){
         if(myLibrary[i].isRead == true){
             library.innerHTML += `<div class="card"> \
             <div class="text">\
-            <span class="main"><h4>Book name:</h4><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><h4>Author's name:</h4><p>${myLibrary[i].author}</></span> \
-            <span class="main"><h4>No. of pages:</h4><p>${myLibrary[i].pages}</p></span> \
-            <div class="book-read">\
-            <span class="main"><h4>I have read it.</h4></span> \
+            <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</></span> \
+            <span class="main"><b>No. of pages:</b><p>${myLibrary[i].pages}</p></span> \
+            </div> \
+            <div class="book-read"> \
+            <span class="main"><em>I have read it.</em></span> \
             <a href="#"><i class="fa fa-check btn"></i></a> \
             <a href="#"><i class="fa fa-trash btn"></i></a> \
-            </div> \
             </div> \
             </div>`
         }
         else{
             library.innerHTML += `<div class="card"> \
             <div class="text">\
-            <span class="main"><h4>Book name:</h4><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><h4>Author's name:</h4><p>${myLibrary[i].author}</p></span> \
-            <span class="main"><h4>No. of pages:</h4><p>${myLibrary[i].pages}</p></span> \
-            <span class="main"><h4>I have'nt read it.</h4></span> \
+            <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</></span> \
+            <span class="main"><b>No. of pages:</b><p>${myLibrary[i].pages}</p></span> \
+            </div> \
             <div class="book-read"> \
+            <span class="main"><em>I have'nt read it.</em></span> \
             <a href="#"><i class="fa fa-check btn"></i></a> \
             <a href="#"><i class="fa fa-trash btn"></i></a> \
-            </div> \
             </div> \
             </div>`
         }
