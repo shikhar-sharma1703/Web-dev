@@ -40,8 +40,8 @@ function storeValues(e){
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status');
-    if(title=="" || author=="" || pages==""){
-        alert("Fill the form properly")
+    if(title=="" || author=="" ||pages==""){
+        alert("Fill all the necessary details!")
     }
     else{
         document.getElementById('contact').reset()
