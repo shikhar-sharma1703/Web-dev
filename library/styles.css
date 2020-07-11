@@ -118,8 +118,9 @@ fieldset {
 }
 
 .card-container {
+    padding: 100px;
     display: grid;
-    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     justify-content: center;
     align-items: center;
@@ -140,7 +141,7 @@ fieldset {
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgb(14, 13, 13);
 }
 
 .text {
