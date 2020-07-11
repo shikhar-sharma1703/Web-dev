@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -8,7 +9,7 @@
     <button id="New-book" class="buttons" value="add">Add new book</button>
     </div>
     <div class="container" id="popup-form">
-        <form id="contact">
+        <form id="contact" class="modal-content">
             <h3>Enter book details:</h3>
             
             <fieldset>
@@ -24,7 +25,7 @@
             </fieldset>
             
             <fieldset>
-                <label for="status">Read:</label>
+                <label for="status">Check this box if you've read it:&nbsp;&nbsp;</label>
                 <input type="checkbox" name="status" id="status" checked>
             </fieldset>
             

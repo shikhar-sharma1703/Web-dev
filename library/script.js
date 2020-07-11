@@ -20,7 +20,7 @@ function Book(title, author, pages, isRead){
 function openForm(){
     if (addBook.value == "add"){
         addBook.innerHTML = "Done"
-        document.getElementById("popup-form").style.display = 'block';
+        document.getElementById("popup-form").style.display = 'inline-block';
         addBook.value = "done";
         return
     }
@@ -40,15 +40,19 @@ function storeValues(e){
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status');
-
-    document.getElementById('contact').reset()
-    if(status.checked){
-        myLibrary.push(new Book(title,author,pages,true))
+    if(title=="" || author=="" || pages==""){
+        alert("Fill the form properly")
     }
     else{
-        myLibrary.push(new Book(title,author,pages,false))
+        document.getElementById('contact').reset()
+        if(status.checked){
+            myLibrary.push(new Book(title,author,pages,true))
+        }
+        else{
+            myLibrary.push(new Book(title,author,pages,false))
+        }
+        render()
     }
-    render()
 }
 
 submit.addEventListener('click',storeValues)
@@ -59,20 +63,28 @@ function render(){
         if(myLibrary[i].isRead == true){
             library.innerHTML += `<div class="card"> \
             <div class="text">\
-            <span class="main"><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><p>${myLibrary[i].author}</p></span> \
-            <span class="main"><p>${myLibrary[i].pages}</p></span> \
-            <span class="main"><p>I have read it.</p></span> \
+            <span class="main"><h4>Book name:</h4><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><h4>Author's name:</h4><p>${myLibrary[i].author}</></span> \
+            <span class="main"><h4>No. of pages:</h4><p>${myLibrary[i].pages}</p></span> \
+            <div class="book-read">\
+            <span class="main"><h4>I have read it.</h4></span> \
+            <a href="#"><i class="fa fa-check btn"></i></a> \
+            <a href="#"><i class="fa fa-trash btn"></i></a> \
+            </div> \
             </div> \
             </div>`
         }
         else{
             library.innerHTML += `<div class="card"> \
             <div class="text">\
-            <span class="main"><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><p>${myLibrary[i].author}</p></span> \
-            <span class="main"><p>${myLibrary[i].pages}</p></span> \
-            <span class="main"><p>I have'nt read it.</p></span> \
+            <span class="main"><h4>Book name:</h4><p>${myLibrary[i].title}</p></span> \
+            <span class="main"><h4>Author's name:</h4><p>${myLibrary[i].author}</p></span> \
+            <span class="main"><h4>No. of pages:</h4><p>${myLibrary[i].pages}</p></span> \
+            <span class="main"><h4>I have'nt read it.</h4></span> \
+            <div class="book-read"> \
+            <a href="#"><i class="fa fa-check btn"></i></a> \
+            <a href="#"><i class="fa fa-trash btn"></i></a> \
+            </div> \
             </div> \
             </div>`
         }
