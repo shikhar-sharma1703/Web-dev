@@ -2,6 +2,7 @@ let addBook = document.getElementById('New-book')
 let submit = document.getElementById('submit')
 let library = document.getElementById('card-container')
 
+
 //array to store book objects
 let myLibrary = []
 
@@ -11,6 +12,7 @@ function Book(title, author, pages, isRead){
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    console.log(isRead)
     this.info = function(){
         return `${title} is written by ${author}`
     }
@@ -40,19 +42,14 @@ function storeValues(e){
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status');
-    if(title=="" || author=="" ||pages==""){
-        alert("Fill all the necessary details!")
-    }
-    else{
+    //if(title=="" || author=="" ||pages==""){
+    //    alert("Fill all the necessary details!")
+    //}
+    //else{
+        myLibrary.push(new Book(title,author,pages,status.checked))
         document.getElementById('contact').reset()
-        if(status.checked){
-            myLibrary.push(new Book(title,author,pages,true))
-        }
-        else{
-            myLibrary.push(new Book(title,author,pages,false))
-        }
         render()
-    }
+    //}
 }
 
 submit.addEventListener('click',storeValues)
@@ -74,7 +71,7 @@ function render(){
             </div> \
             </div>`
         }
-        else{
+        else if(myLibrary[i].isRead == false){
             library.innerHTML += `<div class="card"> \
             <div class="text">\
             <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \

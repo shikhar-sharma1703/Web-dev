@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,14 @@
   -o-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+.header{
+    margin-top: 40px;
+    font-family: 'Poppins',sans-serif;
+    -webkit-user-modify: read-write-plaintext-only;
+    letter-spacing: 2px;
+}
+
 html{
     height: 100%;
 }
@@ -140,6 +149,7 @@ fieldset {
     grid-gap: 50px;
     justify-content: center;
     max-width: fit-content;
+    margin: 0 auto;
 }
 
 .card {
