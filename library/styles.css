@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +11,17 @@
   -o-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
 .container {
     display: none;
     z-index: 1;
@@ -126,10 +136,10 @@ fieldset {
 .card-container {
     padding: 100px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     justify-content: center;
-    background-color: #fff;
+    max-width: fit-content;
 }
 
 .card {
@@ -139,6 +149,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    min-width: max-content;
     transition: 0.3s;
     color: white;
 }
@@ -148,7 +159,10 @@ fieldset {
 }
 
 .text {
-    padding: 2px 16px;
+    padding: 20px;
+    margin: auto;
+    font-family: 'Poppins',sans-serif;
+    text-align: center;
 }
 
 .btn{
@@ -166,4 +180,5 @@ fieldset {
     text-align: center;
     margin: auto;
     margin-bottom: 10px;
+    padding: 20px;
 }

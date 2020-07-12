@@ -64,7 +64,7 @@ function render(){
             library.innerHTML += `<div class="card"> \
             <div class="text">\
             <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</></span> \
+            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</p></span> \
             <span class="main"><b>No. of pages:</b><p>${myLibrary[i].pages}</p></span> \
             </div> \
             <div class="book-read"> \
@@ -78,7 +78,7 @@ function render(){
             library.innerHTML += `<div class="card"> \
             <div class="text">\
             <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
-            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</></span> \
+            <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</p></span> \
             <span class="main"><b>No. of pages:</b><p>${myLibrary[i].pages}</p></span> \
             </div> \
             <div class="book-read"> \
