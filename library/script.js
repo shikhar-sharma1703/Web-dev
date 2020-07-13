@@ -41,14 +41,14 @@ function storeValues(e){
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status');
-    //if(title=="" || author=="" ||pages==""){
-    //    alert("Fill all the necessary details!")
-    //}
-    //else{
+    if(title=="" || author=="" ||pages==""){
+        alert("Fill all the necessary details!")
+    }
+    else{
         myLibrary.push(new Book(title,author,pages,status.checked))
         document.getElementById('contact').reset()
         render()
-    //}
+    }
 }
 
 submit.addEventListener('click',storeValues)
