@@ -12,7 +12,6 @@ function Book(title, author, pages, isRead){
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
-    console.log(isRead)
     this.info = function(){
         return `${title} is written by ${author}`
     }
@@ -84,6 +83,24 @@ function render(){
             <a href="#"><i class="fa fa-trash btn"></i></a> \
             </div> \
             </div>`
+        }
+    }
+    const buttons = document.getElementsByClassName("btn")
+    Array.from(buttons).forEach(button => button.addEventListener("click",toggle));
+}
+
+function toggle(e){
+    const button = e.target;
+    if (button.classList.contains("fa-trash")){
+        button.parentNode.parentNode.parentNode.remove()
+        myLibrary.splice(button.parentNode.parentNode.parentNode,1)
+    }
+    else if(button.classList.contains("fa-check")){
+        if(button.parentNode.parentNode.childNodes[1].firstChild.textContent === "I have'nt read it."){
+            button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have read it."
+        }
+        else if(button.parentNode.parentNode.childNodes[1].firstChild.textContent === "I have read it."){
+            button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have'nt read it."
         }
     }
 }

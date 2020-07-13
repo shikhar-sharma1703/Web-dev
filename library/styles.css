@@ -12,11 +12,14 @@
   -o-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+h1{
+    margin: 0 auto;
+    padding: 20px;
+}
 
 .header{
-    margin-top: 40px;
+    margin-top: 60px;
     font-family: 'Poppins',sans-serif;
-    -webkit-user-modify: read-write-plaintext-only;
     letter-spacing: 2px;
 }
 
