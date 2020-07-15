@@ -17,6 +17,8 @@ const addDB = (book) => {
     })
 }
 
+//Remove book from firestore
+
 let addBook = document.getElementById('New-book')
 let submit = document.getElementById('submit')
 let library = document.getElementById('card-container')
@@ -25,8 +27,14 @@ let library = document.getElementById('card-container')
 //array to store book objects
 let myLibrary = []
 
+
+//Database values
+let books = []
+let keyslist = []
+
 let dblibrary = "";
 
+//function to copy books from realtime database to my Array.
 dbBooks.on('value',snap => {
     dblibrary = snap.val()
     keyslist = Object.keys(dblibrary)
