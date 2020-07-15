@@ -1,3 +1,22 @@
+//Firebase code
+
+//Getting a reference to the database service
+const database = firebase.database().ref()
+
+//Create a child of the database caled books
+const dbBooks = database.child("BOOKS")
+
+//Add book to database
+const addDB = (book) => {
+    const autoId = dbBooks.push().key
+    dbBooks.child(autoId).set({
+        title: book.title,
+        author: book.author,
+        pages: book.pages,
+        isRead: book.isRead,
+    })
+}
+
 let addBook = document.getElementById('New-book')
 let submit = document.getElementById('submit')
 let library = document.getElementById('card-container')
@@ -5,6 +24,19 @@ let library = document.getElementById('card-container')
 
 //array to store book objects
 let myLibrary = []
+
+let dblibrary = "";
+
+dbBooks.on('value',snap => {
+    dblibrary = snap.val()
+    keyslist = Object.keys(dblibrary)
+    books = Object.values(dblibrary)
+    for(let j =0; j < books.length; j++){
+        myLibrary.push(myLibrary.push(new Book(books[j].title,books[j].author,books[j].pages,books[j].isRead)))
+    }
+    render()
+})
+
 
 //constructor
 function Book(title, author, pages, isRead){
@@ -46,6 +78,7 @@ function storeValues(e){
     }
     else{
         myLibrary.push(new Book(title,author,pages,status.checked))
+        addDB(new Book(title,author,pages,status.checked))
         document.getElementById('contact').reset()
         render()
     }
@@ -104,3 +137,4 @@ function toggle(e){
         }
     }
 }
+
