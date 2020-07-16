@@ -139,7 +139,7 @@ function toggle(e){
         let updateDB = firebase.database().ref("BOOKS/" + key)
 
         updateDB.remove()
-        //button.parentNode.parentNode.parentNode.remove()
+        button.parentNode.parentNode.parentNode.remove()
         //myLibrary.splice(button.parentNode.parentNode.parentNode,1)
     }
     else if(button.classList.contains("fa-check")){
