@@ -14,6 +14,7 @@ const addDB = (book) => {
         author: book.author,
         pages: book.pages,
         isRead: book.isRead,
+        id: book.id,
     })
 }
 
@@ -36,18 +37,19 @@ dbBooks.on('value',snap => {
     books = Object.values(dblibrary)
     myLibrary = []
     for(let j =0; j < books.length; j++){
-        myLibrary.push(new Book(books[j].title,books[j].author,books[j].pages,books[j].isRead))
+        myLibrary.push(new Book(books[j].title,books[j].author,books[j].pages,books[j].isRead,books[j].id))
     }
     render()
 })
 
 
 //constructor
-function Book(title, author, pages, isRead){
+function Book(title, author, pages, isRead, id){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    this.id = id;
     this.info = function(){
         return `${title} is written by ${author}`
     }
@@ -77,12 +79,13 @@ function storeValues(e){
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status');
+    let id = myLibrary.length
     if(title=="" || author=="" ||pages==""){
         alert("Fill all the necessary details!")
     }
     else{
-        myLibrary.push(new Book(title,author,pages,status.checked))
-        addDB(new Book(title,author,pages,status.checked))
+        myLibrary.push(new Book(title,author,pages,status.checked,id))
+        addDB(new Book(title,author,pages,status.checked,id))
         document.getElementById('contact').reset()
         render()
     }
@@ -94,7 +97,7 @@ function render(){
     library.innerHTML = '';
     for(let i=0;i<myLibrary.length;i++){
         if(myLibrary[i].isRead == true){
-            library.innerHTML += `<div class="card"> \
+            library.innerHTML += `<div id="${myLibrary[i].id}" class="card"> \
             <div class="text">\
             <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
             <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</p></span> \
@@ -108,7 +111,7 @@ function render(){
             </div>`
         }
         else if(myLibrary[i].isRead == false){
-            library.innerHTML += `<div class="card"> \
+            library.innerHTML += `<div id="${myLibrary[i].id}" class="card"> \
             <div class="text">\
             <span class="main"><b>Book name:</b><p>${myLibrary[i].title}</p></span> \
             <span class="main"><b>Author's name:</b><p>${myLibrary[i].author}</p></span> \
@@ -129,16 +132,42 @@ function render(){
 function toggle(e){
     const button = e.target;
     if (button.classList.contains("fa-trash")){
-        button.parentNode.parentNode.parentNode.remove()
-        myLibrary.splice(button.parentNode.parentNode.parentNode,1)
+        let bookid = button.parentNode.parentNode.parentNode.id
+        let book = myLibrary.find(book => book.id == bookid)
+        let index = myLibrary.indexOf(book)
+        let key = keyslist[index]
+        let updateDB = firebase.database().ref("BOOKS/" + key)
+
+        updateDB.remove()
+        //button.parentNode.parentNode.parentNode.remove()
+        //myLibrary.splice(button.parentNode.parentNode.parentNode,1)
     }
     else if(button.classList.contains("fa-check")){
-        if(button.parentNode.parentNode.childNodes[1].firstChild.textContent === "I have'nt read it."){
+        /**if(button.parentNode.parentNode.childNodes[1].firstChild.textContent === "I have'nt read it."){
             button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have read it."
         }
         else if(button.parentNode.parentNode.childNodes[1].firstChild.textContent === "I have read it."){
             button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have'nt read it."
+        }*/
+        let bookid = button.parentNode.parentNode.parentNode.id
+        let book = myLibrary.find(book => book.id == bookid)
+        let index = myLibrary.indexOf(book)
+        let key = keyslist[index]
+        let updateDB = firebase.database().ref("BOOKS/" + key)
+
+        if(book.isRead === false){
+            button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have read it."
+            book.isRead = true
         }
+        else if(book.isRead === true){
+            button.parentNode.parentNode.childNodes[1].firstChild.textContent = "I have'nt read it."
+            book.isRead = false
+        }
+        
+        updateDB.update({
+            isRead: book.isRead
+        })
     }
+
 }
 
