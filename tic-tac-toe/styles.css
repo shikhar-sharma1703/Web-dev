@@ -27,10 +27,6 @@
     border: 3px solid #2c3e50;
 	display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    transition:0.3s;
-}
-
-.board:hover {
     box-shadow: 11px 11px 20px #34495e;
 }
 
@@ -42,4 +38,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.4s ease 0s;
+}
+
+.cell:hover{
+    border: 2px solid #dedede;
 }
