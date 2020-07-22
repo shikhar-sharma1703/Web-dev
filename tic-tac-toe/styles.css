@@ -13,6 +13,10 @@
     text-rendering: optimizeLegibility;
 }
 
+html{
+    background-image: linear-gradient( 68.4deg,  rgba(248,182,204,1) 0.5%, rgba(192,198,230,1) 49%, rgba(225,246,240,1) 99.8% );
+}
+
 .body{
     position: relative;
 }
@@ -108,7 +112,7 @@ h1{
 }
   
 #startgame-header {
-    font-family: 'Chelsea Market', cursive;
+    font-family: 'Chelsea Market', 'sans-serif';
     text-align: center;
     font-size: 2.5em;
     color: #292f36;
@@ -116,13 +120,13 @@ h1{
 }
 
 label {
-    font-family: cursive;
+    font-family: 'Chelsea Market',"sans-serif";
     font-size: 2em; 
     text-align: center;
 }
 
 input {
-    font-family: cursive;
+    font-family: 'Chelsea Market',"sans-serif";
     font-size: 1em; 
     margin: 20px;
     border-radius: 0px;
@@ -139,7 +143,7 @@ input {
 }
   
 #startgame-button {
-    font-family: cursive;
+    font-family: 'Chelsea Market',"sans-serif";
     margin-top: 20px;
     border: 5px solid #292f36;
     background-color: #292f36; 
