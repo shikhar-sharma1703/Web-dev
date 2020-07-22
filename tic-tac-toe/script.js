@@ -145,7 +145,7 @@ const playGame = (function(gameState,displayControl){
                     if(!gamePlaying){
                         gameState.resetBoard(board);
                         if(winner == "X"){
-                        dom.heading.textContent = `Congratulations ${namep1}! YOU WON!`
+                            dom.heading.textContent = `Congratulations ${namep1}! YOU WON!`
                         }
                         else{
                             dom.heading.textContent = `Congratulations ${namep2}! YOU WON!`
@@ -161,6 +161,7 @@ const playGame = (function(gameState,displayControl){
         board = gameState.resetBoard();
         displayControl.clearBoard();
         marker = 'O';
+        dom.heading.textContent = "TIC TAC TOE"
     });
 
     window.addEventListener('load', (e) => {
