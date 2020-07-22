@@ -51,13 +51,15 @@ const gameState = (function() {
     }
 
     const resetBoard = function() {
-        gameBoard = ['', '', '', '', '', '', '', '','']
+        for(let i=0; i<gameBoard.length; i++) {
+            gameBoard[i] = '';
+        }
         return gameBoard
     }
 
 
     return {
-        gameBoard, storeMarker, checkWinner , resetBoard
+        gameBoard, storeMarker, checkWinner ,resetBoard
     }
 })();
 
@@ -126,7 +128,7 @@ const playGame = (function(gameState,displayControl){
                     //STORE THE ELEMENT INSIDE THE GAMEBOARD ARRAY
                     gameState.storeMarker(id, marker)
                     //Fill the board
-                    
+                    console.log(board)
                     cell.textContent = board[id];
 
                     //Check for a winner
@@ -135,7 +137,8 @@ const playGame = (function(gameState,displayControl){
                     console.log(winner)
 
                     if(!gamePlaying){
-                        gameState.resetBoard();
+                        gameState.resetBoard(board);
+                        console.log(board)
                         alert("Game Over")
                     }
                 }    
