@@ -4,45 +4,55 @@ const gameState = (function() {
 
     const storeMarker= function(id, marker){
         gameBoard[id] = marker;
-        console.log(gameBoard)
     }  
 
     const checkWinner = function(gamePlaying){
+        let winner;
         if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
             gamePlaying = false;
+            winner = gameBoard[0];
         } 
         else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
             gamePlaying = false;
+            winner = gameBoard[0];
         } 
         else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
             gamePlaying = false;
+            winner = gameBoard[0];
         } 
         else if (gameBoard[1] !== '' && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
             gamePlaying = false;
+            winner = gameBoard[1];
         }
         else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
             gamePlaying = false;
+            winner = gameBoard[2]
         } 
         else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
             gamePlaying = false;
+            winner = gameBoard[2]
         } 
         else if (gameBoard[3] !== '' && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
             gamePlaying = false;
+            winner = gameBoard[3]
         } 
         else if (gameBoard[6] !== '' && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
             gamePlaying = false;
+            winner = gameBoard[6]
         } 
         else if (!gameBoard.includes('')) {
             gamePlaying = false;
+            winner = '';
         } 
         else {
             gamePlaying = true;
         }
-        return gamePlaying;
+        return {winner,gamePlaying};
     }
 
     const resetBoard = function() {
         gameBoard = ['', '', '', '', '', '', '', '','']
+        return gameBoard
     }
 
 
@@ -57,7 +67,8 @@ const displayController = (function(){
     
     const domElements = {
         cells: document.getElementsByClassName("cell"),
-        board: document.getElementById("board") 
+        board: document.getElementById("board"),
+        newBtn: document.getElementById("new-game")
     }
 
     //Marker getter
@@ -66,64 +77,84 @@ const displayController = (function(){
     }
 
     //Change marker on turns
-    const changePlayer = function(){
-        if(currentPlayer == "X"){
-            currentPlayer = "O"
+    const changePlayer = function(marker){
+        if(marker == "X"){
+            marker = "O"
         }
         else{
-            currentPlayer = "X"
+            marker = "X"
         }
-        return currentPlayer
+        return marker
     }
 
-    //For rendering the board
-    const fillBoard = function(cell, board, id){
-        cell.textContent = board[id];
+    //Clear the board
+    const clearBoard = function(){
+        Array.from(domElements.cells).forEach((el) => el.textContent = "");
     }
 
+    //const togglePlayer = function() {
+    //    dom.notif.textContent === 'Player 1' ? (dom.notif.textContent = 'Player 2') : (dom.notif.textContent = 'Player 1');
+    //}
+    
     return {
         domElements,
         getMarker,
         changePlayer,
-        fillBoard,
+        clearBoard,
     }
 })()
 
 // Main function
 const playGame = (function(gameState,displayControl){
     let dom = displayControl.domElements;
-    let gamePlaying = true;
-
-    const addMarkers = function(e){
+    let board, marker, winner;
+    let gamePlaying = true; 
+    board = gameState.board;
+    marker = "O"
+    
+    dom.board.addEventListener('click', function(e){
         if(gamePlaying){
             if(e.target.matches('.cell')){
                 const cell = e.target;
-                const board = gameState.gameBoard;
+                let board = gameState.gameBoard;
                 const id = parseInt(e.target.id)
 
-                //Get marker
-                const marker = displayControl.changePlayer()
+                if(board[id] == ""){
+                    //Get marker
+                    marker = displayControl.changePlayer(marker)
 
-                //STORE THE ELEMENT INSIDE THE GAMEBOARD ARRAY
-                gameState.storeMarker(id, marker)
+                    //STORE THE ELEMENT INSIDE THE GAMEBOARD ARRAY
+                    gameState.storeMarker(id, marker)
+                    //Fill the board
+                    
+                    cell.textContent = board[id];
 
-                //Fill the board
-                displayControl.fillBoard(cell,board,id)
+                    //Check for a winner
+                    gamePlaying = gameState.checkWinner(gamePlaying).gamePlaying;
+                    winner = gameState.checkWinner(winner).winner;
+                    console.log(winner)
 
-                //Check for a winner
-                gamePlaying = gameState.checkWinner(gamePlaying);
-
-                if(!gamePlaying){
-                    gameState.resetBoard();
-                    alert("Game Over")
-                }
+                    if(!gamePlaying){
+                        gameState.resetBoard();
+                        alert("Game Over")
+                    }
+                }    
             }
         }
-    }
+    });
     
-    dom.board.addEventListener('click',addMarkers)
+    dom.newBtn.addEventListener('click', () => {
+        gamePlaying = true;
+        board = gameState.resetBoard();
+        displayControl.clearBoard();
+        marker = 'O';
+    });
+
+    window.addEventListener('load', (e) => {
+        gamePlaying = true;
+        displayControl.clearBoard();
+    });
 
 })(gameState, displayController)
 
-playGame
 
