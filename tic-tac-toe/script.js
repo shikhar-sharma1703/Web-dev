@@ -70,7 +70,18 @@ const displayController = (function(){
     const domElements = {
         cells: document.getElementsByClassName("cell"),
         board: document.getElementById("board"),
-        newBtn: document.getElementById("new-game")
+        newBtn: document.getElementById("new-game"),
+        heading: document.getElementById("title"),
+        modal: document.getElementById("modal-startgame"),
+        startgame: document.getElementById("startgame-button"),
+        p1input: document.getElementById("p1-input"),
+        p2input: document.getElementById("p2-input"),
+    }
+
+    const players = function(){
+        p1name = domElements.p1input
+        p2name = domElements.p2input
+        return {p1name,p2name}
     }
 
     //Marker getter
@@ -103,17 +114,19 @@ const displayController = (function(){
         getMarker,
         changePlayer,
         clearBoard,
+        players
     }
 })()
 
 // Main function
 const playGame = (function(gameState,displayControl){
+    let namep1, namep2;
     let dom = displayControl.domElements;
     let board, marker, winner;
     let gamePlaying = true; 
     board = gameState.board;
     marker = "O"
-    
+
     dom.board.addEventListener('click', function(e){
         if(gamePlaying){
             if(e.target.matches('.cell')){
@@ -138,8 +151,7 @@ const playGame = (function(gameState,displayControl){
 
                     if(!gamePlaying){
                         gameState.resetBoard(board);
-                        console.log(board)
-                        alert("Game Over")
+                        dom.heading.textContent = `Winner of the game is ${winner}`
                     }
                 }    
             }
@@ -156,7 +168,15 @@ const playGame = (function(gameState,displayControl){
     window.addEventListener('load', (e) => {
         gamePlaying = true;
         displayControl.clearBoard();
+        dom.modal.style.display = "block";
     });
+
+    dom.startgame.addEventListener('click',()=> {
+        dom.modal.style.display = "none";
+        namep1 = displayControl.players.p1name.value;
+        namep2 = displayControl.players.p2name.value;
+        console.log({namep1,namep2})
+    })
 
 })(gameState, displayController)
 
