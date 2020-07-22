@@ -78,12 +78,6 @@ const displayController = (function(){
         p2input: document.getElementById("p2-input"),
     }
 
-    const players = function(){
-        p1name = domElements.p1input
-        p2name = domElements.p2input
-        return {p1name,p2name}
-    }
-
     //Marker getter
     const getMarker = function(){
         return currentPlayer
@@ -114,7 +108,6 @@ const displayController = (function(){
         getMarker,
         changePlayer,
         clearBoard,
-        players
     }
 })()
 
@@ -151,7 +144,12 @@ const playGame = (function(gameState,displayControl){
 
                     if(!gamePlaying){
                         gameState.resetBoard(board);
-                        dom.heading.textContent = `Winner of the game is ${winner}`
+                        if(winner == "X"){
+                        dom.heading.textContent = `Congratulations ${namep1}! YOU WON!`
+                        }
+                        else{
+                            dom.heading.textContent = `Congratulations ${namep2}! YOU WON!`
+                        }
                     }
                 }    
             }
@@ -173,9 +171,8 @@ const playGame = (function(gameState,displayControl){
 
     dom.startgame.addEventListener('click',()=> {
         dom.modal.style.display = "none";
-        namep1 = displayControl.players.p1name.value;
-        namep2 = displayControl.players.p2name.value;
-        console.log({namep1,namep2})
+        namep1 = displayControl.domElements.p1input.value;
+        namep2 = displayControl.domElements.p2input.value;
     })
 
 })(gameState, displayController)
