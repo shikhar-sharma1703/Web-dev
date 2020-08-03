@@ -3,7 +3,7 @@ const homepage = (contentDiv) => {
     let pageContent = document.createElement('div');
     pageContent.innerHTML = `
     <header>
-            <a class="logo" href="/"><img src="logo.png" alt="logo"></a>
+            <a class="logo" href="/"><img src="./extra/logo.png" alt="logo"></a>
             <nav id="navbar">
                 <ul class="nav__links">
                    <li id="home" class="nav_btn"><a>Home</a></li>
