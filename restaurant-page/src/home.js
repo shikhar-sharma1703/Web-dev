@@ -1,13 +1,14 @@
 const homepage = (contentDiv) => {
+    contentDiv.innerHTML = ""
     let pageContent = document.createElement('div');
     pageContent.innerHTML = `
     <header>
             <a class="logo" href="/"><img src="logo.png" alt="logo"></a>
             <nav id="navbar">
                 <ul class="nav__links">
-                   <li><a href=""> Home</a></li>
-                   <li><a href=""> Menu</a></li>
-                   <li><a href=""> Contact</a></li>
+                   <li id="home" class="nav_btn"><a>Home</a></li>
+                   <li id="menu" class="nav_btn"><a>Menu</a></li>
+                   <li id="contact" class="nav_btn"><a>Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -20,6 +21,7 @@ const homepage = (contentDiv) => {
         </main>
         `
     contentDiv.appendChild(pageContent);
+
 }
 
 export default homepage
